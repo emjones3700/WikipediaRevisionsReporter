@@ -65,10 +65,7 @@ public final class WikipediaAnalyzer extends VBox {
         try {
             QueryResponse response = engine.queryRevisions(articleTitle);
             Stream<Revision> revisions = response.revisions().stream();
-            String message = revisions
-                    .reduce("",
-                            (result, element) -> result.concat(formatter.format(element) + "\n"),
-                            (a , b) -> a + b);
+            String message = revisions.reduce("", (result, element) -> result.concat(formatter.format(element) + "\n"),(a , b) -> a + b);
             outputArea.setText(message);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
