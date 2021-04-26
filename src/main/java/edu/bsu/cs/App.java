@@ -1,3 +1,4 @@
+
 package edu.bsu.cs;
 
 import com.google.inject.AbstractModule;
@@ -29,6 +30,7 @@ public final class App extends Application {
     public void start(Stage primaryStage) {
         Injector injector = Guice.createInjector(
                 new QueryEngineModule(),
+                new RevisionFormatterModule(),
                 executorServiceModule
         );
         WikipediaAnalyzer analyzer = injector.getInstance(WikipediaAnalyzer.class);
@@ -49,7 +51,6 @@ public final class App extends Application {
         executorService.shutdown();
         //noinspection ResultOfMethodCallIgnored
         executorService.awaitTermination(10, TimeUnit.SECONDS);
-
         executorService.shutdownNow();
     }
 }
