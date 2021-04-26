@@ -45,10 +45,11 @@ public final class App extends Application {
         // will not terminate when the window is closed.
         // Overriding this method allows us to shut down the executor service (as
         // done below) so that the application will terminate gracefully.
-
+    //hi
         executorService.shutdown();
         //noinspection ResultOfMethodCallIgnored
         executorService.awaitTermination(10, TimeUnit.SECONDS);
+
         executorService.shutdownNow();
     }
 }
